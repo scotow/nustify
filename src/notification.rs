@@ -1,5 +1,6 @@
 use crate::error::Error;
 
+#[derive(Debug, Clone)]
 pub struct Notification {
     pub(crate) title: Option<String>,
     pub(crate) message: String,
