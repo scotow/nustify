@@ -4,19 +4,20 @@ type ErrorSource = Box<dyn std::error::Error>;
 
 #[derive(Error, Debug)]
 pub enum Error {
-    #[error("cannot build json data")]
-    Json { source: ErrorSource },
-    #[error("invalid http request")]
-    InvalidRequest { source: ErrorSource },
-    #[error("ifttt api call error")]
-    IftttApi { source: ErrorSource },
+    #[error("invalid ifttt http request")]
+    InvalidIftttRequest { source: ErrorSource },
+    #[error("invalid ifttt http status code")]
+    InvalidIftttStatusCode { code: u16 },
     #[cfg(feature="imgur")]
-    #[error("image is too large for imgur")]
-    ImageTooLarge,
+    #[error("invalid imgur http request")]
+    InvalidImgurRequest { source: ErrorSource },
     #[cfg(feature="imgur")]
-    #[error("imgur api call error")]
-    ImgurApi { source: ErrorSource },
+    #[error("invalid imgur http status code")]
+    InvalidImgurStatusCode { code: u16 },
     #[cfg(feature="imgur")]
-    #[error("cannot deserialize imgur's json")]
-    ImgurJson,
+    #[error("invalid imgur response")]
+    InvalidImgurResponse { source: ErrorSource },
+    #[cfg(feature="imgur")]
+    #[error("invalid imgur json data")]
+    InvalidImgurJson,
 }

@@ -43,7 +43,7 @@ impl Builder {
     }
 
     #[cfg(feature="imgur")]
-    pub async fn imgur_image(self, client_id: &str, image: &[u8]) -> Result<Self, Error> {
+    pub async fn imgur_image(self, client_id: &str, image: Vec<u8>) -> Result<Self, Error> {
         Ok(
             self.image_url(
                 crate::imgur::upload(client_id, image).await?

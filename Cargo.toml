@@ -1,20 +1,18 @@
 [package]
 name = "nustify"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Scotow <contact@scotow.com>"]
 edition = "2018"
 keywords = ["notification", "ifttt", "ios", "android", "imgur"]
 
 [features]
-imgur = ["common-multipart-rfc7578", "futures/std"]
+imgur = ["reqwest/multipart"]
 
 [dependencies]
-isahc = { version = "1.1", features = ["json"] }
+reqwest = { version = "0.11", features = ["json"] }
 serde_json = "1.0"
 thiserror = "1.0"
-common-multipart-rfc7578 = { version = "0.3", optional = true }
-futures = { version = "0.3", default-features = false, features = ["std"], optional = true }
 
 [dev-dependencies]
 nustify = { path = ".", features = ["imgur"] }
-futures = { version = "0.3", default-features = false, features = ["executor"] }
+tokio = { version = "1.2", features = ["macros"] }
