@@ -11,9 +11,10 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let image_path = args.get(2).unwrap_or(&"examples/crab.png".to_owned()).clone();
     let image_data = std::fs::read(image_path)?;
 
-    let notification = Builder::new("A nice image".to_owned())
+    let notification = Builder::new("A nice uploaded image".to_owned())
         .imgur_image(imgur_key, image_data).await?
         .build();
+
     nustify::send(&notification, "nustify", &key).await?;
     Ok(())
 }

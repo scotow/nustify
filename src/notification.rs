@@ -1,5 +1,7 @@
 use crate::error::Error;
 
+use std::borrow::Cow;
+
 #[derive(Debug, Clone)]
 pub struct Notification {
     pub(crate) title: Option<String>,
@@ -43,7 +45,10 @@ impl Builder {
     }
 
     #[cfg(feature="imgur")]
-    pub async fn imgur_image(self, client_id: &str, image: Vec<u8>) -> Result<Self, Error> {
+    pub async fn imgur_image<T>(self, client_id: &str, image: T) -> Result<Self, Error>
+    where
+        T: Into<Cow<'static, [u8]>>
+    {
         Ok(
             self.image_url(
                 crate::imgur::upload(client_id, image).await?

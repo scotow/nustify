@@ -1,5 +1,7 @@
 use crate::error::Error::{self, *};
 
+use std::borrow::Cow;
+
 use serde_json::Value;
 use reqwest::{
     Client,
@@ -8,7 +10,10 @@ use reqwest::{
     multipart::{Form, Part},
 };
 
-pub async fn upload(client_id: &str, image: Vec<u8>) -> Result<String, Error> {
+pub async fn upload<T: >(client_id: &str, image: T) -> Result<String, Error>
+where
+    T: Into<Cow<'static, [u8]>>
+{
     let form = Form::new()
         .part("image", Part::bytes(image));
 
