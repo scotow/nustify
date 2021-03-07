@@ -9,9 +9,7 @@ use notification::Notification;
 use serde_json::{Map, Value};
 use reqwest::{Client, StatusCode};
 
-pub async fn send<E, K>(notification: &Notification, event: E, key: K) -> Result<(), Error>
-    where E: AsRef<str>, K: AsRef<str>
-{
+pub async fn send<E, K>(notification: &Notification, event: &str, key: &str) -> Result<(), Error> {
     let mut data = Map::with_capacity(3);
     data.insert("value2".to_owned(), Value::String(notification.message.to_owned()));
     if let Some(title) = notification.title.clone() {
@@ -21,17 +19,12 @@ pub async fn send<E, K>(notification: &Notification, event: E, key: K) -> Result
         data.insert("value3".to_owned(), Value::String(extra.to_owned()));
     }
 
-    let response = Client::new()
-        .post(
-            &format!(
-                "https://maker.ifttt.com/trigger/{}/with/key/{}",
-                event.as_ref(), key.as_ref()
-            )
-        )
-        .json(&data)
-        .send().await
-        .map_err(|e| InvalidIftttRequest { source: e.into() })?;
-
+    let response =
+        Client::new()
+            .post(&format!("https://maker.ifttt.com/trigger/{}/with/key/{}", event, key))
+            .json(&data)
+            .send().await
+            .map_err(|e| InvalidIftttRequest { source: e.into() })?;
     if response.status() != StatusCode::OK {
         return Err(InvalidIftttStatusCode { code: response.status().as_u16() })
     }
