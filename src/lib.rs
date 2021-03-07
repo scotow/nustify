@@ -9,7 +9,7 @@ use notification::Notification;
 use serde_json::{Map, Value};
 use reqwest::{Client, StatusCode};
 
-pub async fn send<E, K>(notification: &Notification, event: &str, key: &str) -> Result<(), Error> {
+pub async fn send(notification: &Notification, event: &str, key: &str) -> Result<(), Error> {
     let mut data = Map::with_capacity(3);
     data.insert("value2".to_owned(), Value::String(notification.message.to_owned()));
     if let Some(title) = notification.title.clone() {
