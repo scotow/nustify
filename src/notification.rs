@@ -1,8 +1,8 @@
 #[cfg(feature="imgur")]
-use crate::error::Error;
-
-#[cfg(feature="imgur")]
-use std::borrow::Cow;
+use {
+    crate::error::Error,
+    std::borrow::Cow
+};
 
 #[derive(Debug, Clone)]
 pub struct Notification {
