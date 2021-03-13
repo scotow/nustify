@@ -1,8 +1,11 @@
 [package]
 name = "nustify"
 version = "0.2.1"
-authors = ["Scotow <contact@scotow.com>"]
 edition = "2018"
+authors = ["Scotow <contact@scotow.com>"]
+license = "MIT"
+homepage = "https://github.com/scotow/nustify"
+description = "Send iOS/Android Notifications using IFTTT's Webhook"
 keywords = ["notification", "ifttt", "ios", "android", "imgur"]
 
 [features]
