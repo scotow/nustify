@@ -1,5 +1,7 @@
+#[cfg(feature="imgur")]
 use crate::error::Error;
 
+#[cfg(feature="imgur")]
 use std::borrow::Cow;
 
 #[derive(Debug, Clone)]
