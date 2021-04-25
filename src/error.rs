@@ -2,6 +2,7 @@ use thiserror::Error;
 
 type ErrorSource = Box<dyn std::error::Error>;
 
+/// All possible errors returned by the crate.
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("invalid ifttt http request")]

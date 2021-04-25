@@ -10,7 +10,7 @@ use reqwest::{
     multipart::{Form, Part},
 };
 
-pub async fn upload<T: >(client_id: &str, image: T) -> Result<String, Error>
+pub(crate) async fn upload<T>(client_id: &str, image: T) -> Result<String, Error>
 where
     T: Into<Cow<'static, [u8]>>
 {

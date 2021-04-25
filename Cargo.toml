@@ -1,6 +1,6 @@
 [package]
 name = "nustify"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2018"
 authors = ["Scotow <contact@scotow.com>"]
 license = "MIT"
@@ -19,3 +19,6 @@ thiserror = "1.0"
 [dev-dependencies]
 nustify = { path = ".", features = ["imgur"] }
 tokio = { version = "1.2", features = ["macros"] }
+
+[package.metadata.docs.rs]
+all-features = true

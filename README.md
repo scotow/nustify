@@ -39,8 +39,8 @@ Next, you need to create the corresponding applet in your IFTTT account. Applets
 
 The final configuration of the applet looks like this:
 
-![Applet](https://user-images.githubusercontent.com/7684550/116012302-0fde5b80-a62a-11eb-9d68-af737d4abbc8.png)
-![Applet](https://user-images.githubusercontent.com/7684550/116012327-300e1a80-a62a-11eb-99d5-9f05dbc020ba.png)
+<img width="480" alt="Screen Shot 2021-04-26 at 00 54 32" src="https://user-images.githubusercontent.com/7684550/116015612-2e4c5300-a63a-11eb-8f7f-132e5c8cedb1.png">
+<img width="480" alt="Screen Shot 2021-04-26 at 00 55 54" src="https://user-images.githubusercontent.com/7684550/116015614-2f7d8000-a63a-11eb-9800-78b067897d99.png">
 
 
 ## Getting the Webhook key
